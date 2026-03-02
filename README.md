@@ -18,33 +18,23 @@ Each service is independently structured and communicates asynchronously using R
 
 🏗 Architecture
 
-Services included:
+ Services included:
 
-API Gateway
-
-Auth Service
-
-Post Service
-
-Media Service
-
-Search Service
+- API Gateway
+- Auth Service
+- Post Service
+- Media Service
+- Search Service
 
 ⚙️ Tech Stack
 
-Node.js
-
-Express.js
-
-MongoDB
-
-Redis
-
-RabbitMQ
-
-Cloudinary
-
-Docker (configuration support included)
+- Node.js
+- Express.js
+- MongoDB
+- Redis
+- RabbitMQ
+- Cloudinary
+-Docker (configuration support included)
 
 🧠 Design Decisions
 
@@ -59,29 +49,30 @@ Docker (configuration support included)
 - Services are loosely coupled to allow independent scaling
 
 🔄 System Workflow
-Post Creation Flow
 
-1. Client sends request to API Gateway
+ 1. Post Creation Flow
 
-2. API Gateway routes request to Post Service
+- Client sends request to API Gateway
 
-3. Post Service stores post data in MongoDB
+- API Gateway routes request to Post Service
 
-4. Post Service publishes an event to RabbitMQ
+- Post Service stores post data in MongoDB
 
-5. Search Service consumes the event and updates search index
+- Post Service publishes an event to RabbitMQ
 
-6. Media Service handles image uploads via Cloudinary
+- Search Service consumes the event and updates search index
 
-Post Deletion Flow
+- Media Service handles image uploads via Cloudinary
 
-1. Post Service deletes post from database
+2. Post Deletion Flow
 
-2. Emits deletion event to RabbitMQ
+- Post Service deletes post from database
 
-3. Media Service listens to event and deletes related images from Cloudinary
+- Emits deletion event to RabbitMQ
 
-4. Search Service updates its index accordingly
+- Media Service listens to event and deletes related images from Cloudinary
+
+- Search Service updates its index accordingly
 
 
 
