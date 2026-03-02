@@ -1,0 +1,11 @@
+const express=require("express")
+const { getAllPosts, getAPost, createPost, updatePost, deletePost } = require("../controllers/post.controller")
+const authMiddleware = require("../middlewares/auth.middleware")
+const postRouter=express.Router()
+postRouter.use(authMiddleware)
+postRouter.get("/",getAllPosts)
+postRouter.get("/:id",getAPost)
+postRouter.post("/",createPost)
+postRouter.put("/:id",updatePost)
+postRouter.delete("/:id",deletePost)
+module.exports=postRouter
